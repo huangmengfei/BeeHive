@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		53EC2780B967EAD34365FE77 /* Pods_BeeHive_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89ED80B0F3198FBA54DBAE41 /* Pods_BeeHive_Tests.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -20,10 +21,14 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		A0BE983021D4BF490066C833 /* BHTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0BE982F21D4BF490066C833 /* BHTestViewController.m */; };
+		A0BE983321D629540066C833 /* BHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* BHViewController.m */; };
+		A0BE983C21D63FD10066C833 /* BHServiceImpl01.m in Sources */ = {isa = PBXBuildFile; fileRef = A0BE983B21D63FD10066C833 /* BHServiceImpl01.m */; };
 		E202300B1C980A10001D9FC4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E202300A1C980A10001D9FC4 /* Launch Screen.storyboard */; };
 		E23D70CA1C9A96C5005E8577 /* ShopModule.m in Sources */ = {isa = PBXBuildFile; fileRef = E23D70C91C9A96C5005E8577 /* ShopModule.m */; };
 		E24C02931CA96F5400BF6FDE /* ShopModuleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E24C02921CA96F5400BF6FDE /* ShopModuleViewController.m */; };
 		E24C02961CA9701400BF6FDE /* ShopModuleService.m in Sources */ = {isa = PBXBuildFile; fileRef = E24C02951CA9701400BF6FDE /* ShopModuleService.m */; };
+		E2D2DAE5075179A0DBD418B3 /* Pods_BeeHive_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7911E2ECF43B213E4F31A98 /* Pods_BeeHive_Example.framework */; };
 		FD8694641B5435BD00C3E7C5 /* TradeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8694631B5435BD00C3E7C5 /* TradeModule.m */; };
 		FD8694681B5438A300C3E7C5 /* HomeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8694671B5438A300C3E7C5 /* HomeModule.m */; };
 		FD86946F1B543D5100C3E7C5 /* BHTradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD86946E1B543D5100C3E7C5 /* BHTradeViewController.m */; };
@@ -43,7 +48,7 @@
 
 /* Begin PBXFileReference section */
 		2FEB2C89F26501EED7267286 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		5ABC60DA7CABA89F0FF76BA4 /* Pods-BeeHive_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeHive_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeeHive_Example/Pods-BeeHive_Example.release.xcconfig"; sourceTree = "<group>"; };
+		57AD0ABFC92B8DD538C56DDF /* Pods-BeeHive_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeHive_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeeHive_Example/Pods-BeeHive_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* BeeHive_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeeHive_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -62,12 +67,18 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		658ACC905783DDBE743923DD /* Pods-BeeHive_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeHive_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeeHive_Tests/Pods-BeeHive_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		7CB623DADCA76C68144DA9A7 /* Pods-BeeHive_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeHive_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeeHive_Example/Pods-BeeHive_Example.release.xcconfig"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8924802DAA5D06FB9E3042C5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		BB5876F8DF2E56F7D47DFD5D /* Pods-BeeHive_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeHive_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeeHive_Example/Pods-BeeHive_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		BE5B35A6471442F678BE99CA /* BeeHive.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = BeeHive.podspec; path = ../BeeHive.podspec; sourceTree = "<group>"; };
-		C69F626F6CDF69BC88F4FAED /* Pods-BeeHive_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeHive_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeeHive_Tests/Pods-BeeHive_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		89ED80B0F3198FBA54DBAE41 /* Pods_BeeHive_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeeHive_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		937662EBE28C80E1BD5C3BCF /* Pods-BeeHive_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeHive_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeeHive_Tests/Pods-BeeHive_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		A0BE982E21D4BF490066C833 /* BHTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BHTestViewController.h; sourceTree = "<group>"; };
+		A0BE982F21D4BF490066C833 /* BHTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BHTestViewController.m; sourceTree = "<group>"; };
+		A0BE983A21D63FD10066C833 /* BHServiceImpl01.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BHServiceImpl01.h; sourceTree = "<group>"; };
+		A0BE983B21D63FD10066C833 /* BHServiceImpl01.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BHServiceImpl01.m; sourceTree = "<group>"; };
+		A0BE983D21D63FE90066C833 /* BHServiceImplProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BHServiceImplProtocol.h; sourceTree = "<group>"; };
+		BE5B35A6471442F678BE99CA /* BeeHive.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = BeeHive.podspec; path = ../BeeHive.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C88395E971D5E35D3FF306E0 /* Pods-BeeHive_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeHive_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeeHive_Tests/Pods-BeeHive_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		E202300A1C980A10001D9FC4 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E23D70C81C9A96C5005E8577 /* ShopModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopModule.h; sourceTree = "<group>"; };
 		E23D70C91C9A96C5005E8577 /* ShopModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopModule.m; sourceTree = "<group>"; };
@@ -81,6 +92,7 @@
 		E24C02921CA96F5400BF6FDE /* ShopModuleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopModuleViewController.m; sourceTree = "<group>"; };
 		E24C02941CA9701300BF6FDE /* ShopModuleService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopModuleService.h; sourceTree = "<group>"; };
 		E24C02951CA9701400BF6FDE /* ShopModuleService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopModuleService.m; sourceTree = "<group>"; };
+		F7911E2ECF43B213E4F31A98 /* Pods_BeeHive_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeeHive_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD8694621B5435BD00C3E7C5 /* TradeModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TradeModule.h; sourceTree = "<group>"; };
 		FD8694631B5435BD00C3E7C5 /* TradeModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TradeModule.m; sourceTree = "<group>"; };
 		FD8694661B5438A300C3E7C5 /* HomeModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeModule.h; sourceTree = "<group>"; };
@@ -101,6 +113,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
+				E2D2DAE5075179A0DBD418B3 /* Pods_BeeHive_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,23 +123,13 @@
 			files = (
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
+				53EC2780B967EAD34365FE77 /* Pods_BeeHive_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		19AD0808D523C3ED254EF554 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				BB5876F8DF2E56F7D47DFD5D /* Pods-BeeHive_Example.debug.xcconfig */,
-				5ABC60DA7CABA89F0FF76BA4 /* Pods-BeeHive_Example.release.xcconfig */,
-				C69F626F6CDF69BC88F4FAED /* Pods-BeeHive_Tests.debug.xcconfig */,
-				658ACC905783DDBE743923DD /* Pods-BeeHive_Tests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
@@ -135,7 +138,7 @@
 				6003F5B5195388D20070C39A /* Tests */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
-				19AD0808D523C3ED254EF554 /* Pods */,
+				F65E0D648F10C2B7BDC94EE5 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -154,6 +157,8 @@
 				6003F58D195388D20070C39A /* Foundation.framework */,
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
+				F7911E2ECF43B213E4F31A98 /* Pods_BeeHive_Example.framework */,
+				89ED80B0F3198FBA54DBAE41 /* Pods_BeeHive_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -172,6 +177,8 @@
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
+				A0BE982E21D4BF490066C833 /* BHTestViewController.h */,
+				A0BE982F21D4BF490066C833 /* BHTestViewController.m */,
 			);
 			name = "Example for BeeHive";
 			path = BeeHive;
@@ -239,8 +246,20 @@
 				E24C02801CA9255600BF6FDE /* HomeServiceProtocol.h */,
 				E24C02811CA9255600BF6FDE /* TradeServiceProtocol.h */,
 				E24C02821CA9255600BF6FDE /* UserTrackServiceProtocol.h */,
+				A0BE983D21D63FE90066C833 /* BHServiceImplProtocol.h */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		F65E0D648F10C2B7BDC94EE5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				57AD0ABFC92B8DD538C56DDF /* Pods-BeeHive_Example.debug.xcconfig */,
+				7CB623DADCA76C68144DA9A7 /* Pods-BeeHive_Example.release.xcconfig */,
+				937662EBE28C80E1BD5C3BCF /* Pods-BeeHive_Tests.debug.xcconfig */,
+				C88395E971D5E35D3FF306E0 /* Pods-BeeHive_Tests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		FD8694601B54358F00C3E7C5 /* Trade */ = {
@@ -250,6 +269,8 @@
 				FD8694631B5435BD00C3E7C5 /* TradeModule.m */,
 				FD86946D1B543D5100C3E7C5 /* BHTradeViewController.h */,
 				FD86946E1B543D5100C3E7C5 /* BHTradeViewController.m */,
+				A0BE983A21D63FD10066C833 /* BHServiceImpl01.h */,
+				A0BE983B21D63FD10066C833 /* BHServiceImpl01.m */,
 			);
 			name = Trade;
 			sourceTree = "<group>";
@@ -283,12 +304,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "BeeHive_Example" */;
 			buildPhases = (
-				6DC1F2CD841B13DB5D39FA54 /* Check Pods Manifest.lock */,
+				4432B07D6CDCC050870E2CDA /* [CP] Check Pods Manifest.lock */,
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
-				88C845BDAF6479DEDB1FD33B /* Copy Pods Resources */,
-				ADE8E7AC018E6FCDC51565DF /* Embed Pods Frameworks */,
+				FC9B9B4317E828A018717A66 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -303,11 +323,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "BeeHive_Tests" */;
 			buildPhases = (
-				35830DFB0CD1793A3A080FDF /* Check Pods Manifest.lock */,
+				487AE1A5CD3F95AB4915B89A /* [CP] Check Pods Manifest.lock */,
 				6003F5AA195388D20070C39A /* Sources */,
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
-				9D91291B56C69BE35F8172BD /* Copy Pods Resources */,
+				88FA984CE027CD19ECDCD1B7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -376,75 +396,72 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		35830DFB0CD1793A3A080FDF /* Check Pods Manifest.lock */ = {
+		4432B07D6CDCC050870E2CDA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BeeHive_Example-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6DC1F2CD841B13DB5D39FA54 /* Check Pods Manifest.lock */ = {
+		487AE1A5CD3F95AB4915B89A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BeeHive_Tests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		88C845BDAF6479DEDB1FD33B /* Copy Pods Resources */ = {
+		88FA984CE027CD19ECDCD1B7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BeeHive_Tests/Pods-BeeHive_Tests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BeeHive/BeeHive.framework",
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BeeHive.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeeHive_Example/Pods-BeeHive_Example-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeeHive_Tests/Pods-BeeHive_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9D91291B56C69BE35F8172BD /* Copy Pods Resources */ = {
+		FC9B9B4317E828A018717A66 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BeeHive_Example/Pods-BeeHive_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BeeHive/BeeHive.framework",
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeeHive_Tests/Pods-BeeHive_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		ADE8E7AC018E6FCDC51565DF /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BeeHive.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -464,11 +481,13 @@
 				E24C02961CA9701400BF6FDE /* ShopModuleService.m in Sources */,
 				FD86947B1B54C0C300C3E7C5 /* BHUserTrackViewController.m in Sources */,
 				E23D70CA1C9A96C5005E8577 /* ShopModule.m in Sources */,
+				A0BE983021D4BF490066C833 /* BHTestViewController.m in Sources */,
 				E24C02931CA96F5400BF6FDE /* ShopModuleViewController.m in Sources */,
 				FD8694681B5438A300C3E7C5 /* HomeModule.m in Sources */,
 				FD8694641B5435BD00C3E7C5 /* TradeModule.m in Sources */,
 				FD86947C1B54C0C300C3E7C5 /* UserTrackModule.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				A0BE983C21D63FD10066C833 /* BHServiceImpl01.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +495,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0BE983321D629540066C833 /* BHViewController.m in Sources */,
 				6003F5BC195388D20070C39A /* Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -584,7 +604,7 @@
 		};
 		6003F5C0195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB5876F8DF2E56F7D47DFD5D /* Pods-BeeHive_Example.debug.xcconfig */;
+			baseConfigurationReference = 57AD0ABFC92B8DD538C56DDF /* Pods-BeeHive_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -602,7 +622,7 @@
 		};
 		6003F5C1195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5ABC60DA7CABA89F0FF76BA4 /* Pods-BeeHive_Example.release.xcconfig */;
+			baseConfigurationReference = 7CB623DADCA76C68144DA9A7 /* Pods-BeeHive_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -620,7 +640,7 @@
 		};
 		6003F5C3195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C69F626F6CDF69BC88F4FAED /* Pods-BeeHive_Tests.debug.xcconfig */;
+			baseConfigurationReference = 937662EBE28C80E1BD5C3BCF /* Pods-BeeHive_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -643,7 +663,7 @@
 		};
 		6003F5C4195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 658ACC905783DDBE743923DD /* Pods-BeeHive_Tests.release.xcconfig */;
+			baseConfigurationReference = C88395E971D5E35D3FF306E0 /* Pods-BeeHive_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

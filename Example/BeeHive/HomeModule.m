@@ -36,5 +36,9 @@
     NSLog(@"HomeModule setup");
 }
 
+- (void)modOpenURL:(BHContext *)context {
+    
+}
+
 
 @end

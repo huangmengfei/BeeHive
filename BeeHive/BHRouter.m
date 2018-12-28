@@ -18,13 +18,10 @@
 #import "BHServiceManager.h"
 
 @interface NSObject (BHRetType)
-
 + (id)bh_getReturnFromInv:(NSInvocation *)inv withSig:(NSMethodSignature *)sig;
-
 @end
 
 @implementation NSObject (BHRetType)
-
 + (id)bh_getReturnFromInv:(NSInvocation *)inv withSig:(NSMethodSignature *)sig {
     NSUInteger length = [sig methodReturnLength];
     if (length == 0) return nil;
@@ -92,10 +89,7 @@ return @(ret); \
     }
 #undef return_with_number
 }
-
 @end
-
-static NSString *const BHRClassRegex = @"(?<=T@\")(.*)(?=\",)";
 
 typedef NS_ENUM(NSUInteger, BHRViewControlerEnterMode) {
     BHRViewControlerEnterModePush,
@@ -109,65 +103,48 @@ typedef NS_ENUM(NSUInteger, BHRUsage) {
     BHRUsageRegister
 };
 
+static NSString *const BHRClassRegex = @"(?<=T@\")(.*)(?=\",)";
 static NSMutableDictionary<NSString *, BHRouter *> *routerByScheme = nil;
-
+static NSString *BHRURLGlobalScheme = nil;
 
 @interface BHRPathComponent : NSObject
-
 @property (nonatomic, copy) NSString *key;
 @property (nonatomic, strong) Class mClass;
 @property (nonatomic, copy) NSDictionary<NSString *, id> *params;
 @property (nonatomic, copy) BHRPathComponentCustomHandler handler;
-
 @end
 
 @implementation BHRPathComponent
-
-
-
 @end
 
-static NSString *BHRURLGlobalScheme = nil;
-
 @interface BHRouter ()
-
 @property (nonatomic, strong) NSMutableDictionary<NSString *, BHRPathComponent *> *pathComponentByKey;
 @property (nonatomic, copy) NSString *scheme;
-
 @end
 
 @implementation BHRouter
 
-#pragma mark - property init
-- (NSMutableDictionary<NSString *, BHRPathComponent *> *)pathComponentByKey {
-    if (!_pathComponentByKey) {
-        _pathComponentByKey = @{}.mutableCopy;
-    }
-    return _pathComponentByKey;
-}
-
 #pragma mark - router init
 
-+ (instancetype)globalRouter
-{
++ (instancetype)globalRouter {
     if (!BHRURLGlobalScheme) {
-        NSString *plistPath = [[NSBundle mainBundle] pathForResource:[BHContext shareInstance].moduleConfigName ofType:@"plist"];
-        if ([[NSFileManager defaultManager] fileExistsAtPath:plistPath]) {
-            NSDictionary *plist = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
-            BHRURLGlobalScheme = [plist objectForKey:BHRURLSchemeGlobalKey];
-        }
-        if (!BHRURLGlobalScheme.length) {
-            NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-            BHRURLGlobalScheme = [infoDictionary objectForKey:@"CFBundleIdentifier"];
-        }
-        if (!BHRURLGlobalScheme.length) {
+//        NSString *plistPath = [[NSBundle mainBundle] pathForResource:[BHContext shareInstance].moduleConfigName ofType:@"plist"];
+//        if ([[NSFileManager defaultManager] fileExistsAtPath:plistPath]) {
+//            NSDictionary *plist = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+//            BHRURLGlobalScheme = [plist objectForKey:BHRURLSchemeGlobalKey];
+//        }
+//        if (!BHRURLGlobalScheme.length) {
+//            NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+//            BHRURLGlobalScheme = [infoDictionary objectForKey:@"CFBundleIdentifier"];
+//        }
+//        if (!BHRURLGlobalScheme.length) {
             BHRURLGlobalScheme = @"com.alibaba.beehive";
-        }
+//        }
     }
     return [self routerForScheme:BHRURLGlobalScheme];
 }
-+ (instancetype)routerForScheme:(NSString *)scheme
-{
+
++ (instancetype)routerForScheme:(NSString *)scheme {
     if (!scheme.length) {
         return nil;
     }
@@ -190,37 +167,35 @@ static NSString *BHRURLGlobalScheme = nil;
     return router;
 }
 
-+ (void)unRegisterRouterForScheme:(NSString *)scheme
-{
++ (void)unRegisterRouterForScheme:(NSString *)scheme {
     if (!scheme.length) {
         return;
     }
     
     [routerByScheme removeObjectForKey:scheme];
 }
-+ (void)unRegisterAllRouters
-{
+
++ (void)unRegisterAllRouters {
     [routerByScheme removeAllObjects];
 }
 
 - (void)addPathComponent:(NSString *)pathComponentKey
-       forClass:(Class)mClass
-{
+       forClass:(Class)mClass {
     [self addPathComponent:pathComponentKey forClass:mClass handler:nil];
 }
+
 //handler is a custom module or service init function
 - (void)addPathComponent:(NSString *)pathComponentKey
        forClass:(Class)mClass
-        handler:(BHRPathComponentCustomHandler)handler
-{
+        handler:(BHRPathComponentCustomHandler)handler {
     BHRPathComponent *pathComponent = [[BHRPathComponent alloc] init];
     pathComponent.key = pathComponentKey;
     pathComponent.mClass = mClass;
     pathComponent.handler = handler;
     [self.pathComponentByKey setObject:pathComponent forKey:pathComponentKey];
 }
-- (void)removePathComponent:(NSString *)pathComponentKey
-{
+
+- (void)removePathComponent:(NSString *)pathComponentKey {
     [self.pathComponentByKey removeObjectForKey:pathComponentKey];
 }
 
@@ -229,12 +204,14 @@ static NSString *BHRURLGlobalScheme = nil;
     if (!URL) {
         return NO;
     }
+    
     NSString *scheme = URL.scheme;
     if (!scheme.length) {
         return NO;
     }
     
     NSString *host = URL.host;
+    
     BHRUsage usage = [self usage:host];
     if (usage == BHRUsageUnknown) {
         return NO;
@@ -247,6 +224,7 @@ static NSString *BHRURLGlobalScheme = nil;
     __block BOOL flag = YES;
     
     [pathComponents enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isEqualToString:@"/"]) {return;}
         NSArray<NSString *> * subPaths = [obj componentsSeparatedByString:BHRURLSubPathSplitPattern];
         if (!subPaths.count) {
             flag = NO;
@@ -315,19 +293,21 @@ static NSString *BHRURLGlobalScheme = nil;
     
     return flag;
 }
+
 + (BOOL)openURL:(NSURL *)URL
 {
     return [self openURL:URL withParams:nil andThen:nil];
 }
+
 + (BOOL)openURL:(NSURL *)URL
      withParams:(NSDictionary<NSString *, NSDictionary<NSString *, id> *> *)params
 {
     return [self openURL:URL withParams:params andThen:nil];
 }
+
 + (BOOL)openURL:(NSURL *)URL
      withParams:(NSDictionary<NSString *, NSDictionary<NSString *, id> *> *)params
-        andThen:(void(^)(NSString *pathComponentKey, id obj, id returnValue))then
-{
+        andThen:(void(^)(NSString *pathComponentKey, id obj, id returnValue))then {
     if (![self canOpenURL:URL]) {
         return NO;
     }
@@ -372,7 +352,6 @@ static NSString *BHRURLGlobalScheme = nil;
             
             if (handler) {
                 handler(finalParams);
-                return;
             }
             
             NSString *protocolStr;
@@ -403,7 +382,11 @@ static NSString *BHRURLGlobalScheme = nil;
                     } else {
                         obj = [[mClass alloc] init];
                     }
-                    [obj setObject:obj forKey:finalParams];
+                    
+                    [finalParams enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull nn, BOOL * _Nonnull stop) {
+                        [obj setValue:nn forKey:key];
+                    }];
+                    
                     BOOL isLast = pathComponents.count - 1 ? YES : NO;
                     [self solveJumpWithViewController:(UIViewController *)obj andJumpMode:enterMode shouldAnimate:isLast];
                 } break;
@@ -423,6 +406,15 @@ static NSString *BHRURLGlobalScheme = nil;
     }];
     
     return YES;
+}
+
+#pragma mark - property init
+
+- (NSMutableDictionary<NSString *, BHRPathComponent *> *)pathComponentByKey {
+    if (!_pathComponentByKey) {
+        _pathComponentByKey = @{}.mutableCopy;
+    }
+    return _pathComponentByKey;
 }
 
 #pragma mark - private
@@ -474,40 +466,23 @@ static NSString *BHRURLGlobalScheme = nil;
     return viewController;
 }
 
-+ (NSDictionary<NSString *, id> *)queryDicFromURL:(NSURL *)URL
-{
-    if (!URL) {
-        return nil;
-    }
-    if ([UIDevice currentDevice].systemVersion.floatValue < 8) {
-        NSMutableDictionary *dic = @{}.mutableCopy;
-        NSString *query = URL.query;
-        NSArray<NSString *> *queryStrs = [query componentsSeparatedByString:@"&"];
-        [queryStrs enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            NSArray *keyValue = [obj componentsSeparatedByString:@"="];
-            if (keyValue.count >= 2) {
-                NSString *key = keyValue[0];
-                NSString *value = keyValue[1];
-                [dic setObject:value forKey:key];
-            }
-        }];
-        return dic;
-    } else {
-        NSURLComponents *URLComponents = [NSURLComponents componentsWithURL:URL
-                                                    resolvingAgainstBaseURL:NO];
-        NSArray *queryItems = URLComponents.queryItems;
-        NSMutableDictionary *dic = @{}.mutableCopy;
-        for (NSURLQueryItem *item in queryItems) {
-            if (item.name && item.value) {
-                [dic setObject:item.value forKey:item.name];
-            }
++ (NSDictionary<NSString *, id> *)queryDicFromURL:(NSURL *)URL {
+    if (!URL) { return nil;}
+    
+    NSURLComponents *URLComponents = [NSURLComponents componentsWithURL:URL
+                                                resolvingAgainstBaseURL:NO];
+    
+    NSArray *queryItems = URLComponents.queryItems;
+    NSMutableDictionary *dic = @{}.mutableCopy;
+    for (NSURLQueryItem *item in queryItems) {
+        if (item.name && item.value) {
+            [dic setObject:item.value forKey:item.name];
         }
-        return dic;
     }
+    return dic;
 }
 
-+ (NSDictionary<NSString *, NSDictionary<NSString *, id> *> *)paramsFromJson:(NSString *)json
-{
++ (NSDictionary<NSString *, NSDictionary<NSString *, id> *> *)paramsFromJson:(NSString *)json {
     if (!json.length) {
         return nil;
     }
@@ -521,8 +496,7 @@ static NSString *BHRURLGlobalScheme = nil;
 
 + (NSDictionary<NSString *, id> *)solveURLParams:(NSDictionary<NSString *, id> *)URLParams
                                   withFuncParams:(NSDictionary<NSString *, id> *)funcParams
-                                        forClass:(Class)mClass
-{
+                                        forClass:(Class)mClass {
     if (!URLParams) {
         URLParams = @{};
     }

@@ -17,12 +17,17 @@ static NSString *const BHRURLQueryParamsKey = @"params";
 static NSString *const BHRURLFragmentViewControlerEnterModePush = @"push";
 static NSString *const BHRURLFragmentViewControlerEnterModeModal = @"modal";
 
-
-
 typedef void(^BHRPathComponentCustomHandler)(NSDictionary<NSString *, id> *params);
 
+/**
+ 支持三种类型的路由调用：
+ 1.跳转vc
+    1.1 添加路由：
+    1.2 调用路由：
+ 2.调用服务
+ 3.注册
+ */
 @interface BHRouter : NSObject
-
 
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;
@@ -33,12 +38,15 @@ typedef void(^BHRPathComponentCustomHandler)(NSDictionary<NSString *, id> *param
 + (void)unRegisterRouterForScheme:(NSString *)scheme;
 + (void)unRegisterAllRouters;
 
-//handler is a custom module or service solve function
+
 - (void)addPathComponent:(NSString *)pathComponentKey
        forClass:(Class)mClass;
+
+//handler is a custom module or service solve function
 - (void)addPathComponent:(NSString *)pathComponentKey
        forClass:(Class)mClass
         handler:(BHRPathComponentCustomHandler)handler;
+
 - (void)removePathComponent:(NSString *)pathComponentKey;
 
 //url - >  com.alibaba.beehive://call.service.beehive/pathComponentKey.protocolName.selector/...?params={}(value url encode)
@@ -48,8 +56,10 @@ typedef void(^BHRPathComponentCustomHandler)(NSDictionary<NSString *, id> *param
 //when call service， paramName = @1,@2,...(order of paramValue)
 + (BOOL)canOpenURL:(NSURL *)URL;
 + (BOOL)openURL:(NSURL *)URL;
+
 + (BOOL)openURL:(NSURL *)URL
      withParams:(NSDictionary<NSString *, NSDictionary<NSString *, id> *> *)params;
+
 + (BOOL)openURL:(NSURL *)URL
      withParams:(NSDictionary<NSString *, NSDictionary<NSString *, id> *> *)params
         andThen:(void(^)(NSString *pathComponentKey, id obj, id returnValue))then;

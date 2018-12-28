@@ -15,6 +15,8 @@
 #import "BHModuleManager.h"
 #import "BHServiceManager.h"
 
+#import "BHTestViewController.h"
+
 @interface TestAppDelegate ()
 
 
@@ -39,19 +41,13 @@
 
     
     [super application:application didFinishLaunchingWithOptions:launchOptions];
+    UINavigationController *navCtrl = [[UINavigationController alloc] initWithRootViewController:[BHTestViewController new]];
     
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.rootViewController = navCtrl;
     
-    id<HomeServiceProtocol> homeVc = [[BeeHive shareInstance] createService:@protocol(HomeServiceProtocol)];
+    [self.window makeKeyAndVisible];
     
-
-    if ([homeVc isKindOfClass:[UIViewController class]]) {
-        UINavigationController *navCtrl = [[UINavigationController alloc] initWithRootViewController:(UIViewController*)homeVc];
-        
-        self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        self.window.rootViewController = navCtrl;
-        
-        [self.window makeKeyAndVisible];
-    }
     
     return YES;
 }

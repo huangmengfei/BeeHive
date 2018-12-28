@@ -39,11 +39,10 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [[BHModuleManager sharedManager] triggerEvent:BHMSplashEvent];
     });
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 100000
-    if ([UIDevice currentDevice].systemVersion.floatValue >= 10.0f) {
+
+    if (@available(iOS 10.0, *)) {
         [UNUserNotificationCenter currentNotificationCenter].delegate = self;
     }
-#endif
     
 #ifdef DEBUG
     [[BHTimeProfiler sharedTimeProfiler] saveTimeProfileDataIntoFile:@"BeeHiveTimeProfiler"];
@@ -190,14 +189,14 @@
 }
 #endif
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 100000
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler {
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler  API_AVAILABLE(ios(10.0)){
     [[BeeHive shareInstance].context.notificationsItem setNotification: notification];
     [[BeeHive shareInstance].context.notificationsItem setNotificationPresentationOptionsHandler: completionHandler];
     [[BeeHive shareInstance].context.notificationsItem setCenter:center];
     [[BHModuleManager sharedManager] triggerEvent:BHMWillPresentNotificationEvent];
 };
 
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)())completionHandler {
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)(void))completionHandler  API_AVAILABLE(ios(10.0)){
     [[BeeHive shareInstance].context.notificationsItem setNotificationResponse: response];
     [[BeeHive shareInstance].context.notificationsItem setNotificationCompletionHandler:completionHandler];
     [[BeeHive shareInstance].context.notificationsItem setCenter:center];

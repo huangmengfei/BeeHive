@@ -9,5 +9,5 @@
 @import UIKit;
 
 @interface BHViewController : UITabBarController
-
+@property (nonatomic, copy) NSString *rrrr;
 @end

@@ -58,21 +58,26 @@
                 s2.itemId = @"例子222222";
                 [self registerViewController:(UIViewController *)s2 title:@"交易3" iconName:nil];
             }
-    
-        
     }
     
     return self;
 }
+
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    sleep(1);
+    NSLog(@"%@",self.rrrr);
+}
 
-
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSLog(@"%@",self.rrrr);
 }
 
 -(void)registerViewController:(UIViewController *)vc title:(NSString *)title iconName:(NSString *)iconName
